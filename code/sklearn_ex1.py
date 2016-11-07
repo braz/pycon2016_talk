@@ -34,3 +34,12 @@ X_train, X_test, y_train, y_test = cross_validation.train_test_split(X,
 
 clf = GradientBoostingClassifier(n_estimators=100, learning_rate=1.0, max_depth=1)
 clf.fit(X_train, y_train)
+
+# make predictions for test data
+y_pred = clf.predict(X_test)
+predictions = [round(value) for value in y_pred]
+
+# evaluate predictions
+accuracy = accuracy_score(y_test, predictions)
+
+print("Accuracy: %.2f%%" % (accuracy * 100.0))
